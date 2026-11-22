@@ -441,13 +441,33 @@ button.music-now-playing, button.music-tile { padding: 0; }
 
 /* ── Responsive ── */
 @media (max-width: 700px) {
-  .shell { grid-template-columns: 1fr; }
+  html, body { width: 100%; min-width: 0; overflow-x: hidden; }
+  .top-bar { padding: 12px 16px; }
+  .top-bar-brand { min-width: 0; max-width: 58vw; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .top-bar-discord { max-width: 42vw; padding: 6px 9px; }
+  .shell { display: block; width: 100%; min-height: 0; }
   .icon-rail { display: none; }
-  .main { padding: 0; }
-  .section { position: relative; inset: auto; padding: var(--space-3) var(--space-3) calc(var(--space-5) + env(safe-area-inset-bottom, 0px)); gap: var(--space-3); }
+  .main { width: 100%; padding: 0; }
+  .section { position: relative; inset: auto; width: 100%; padding: 14px 16px calc(32px + env(safe-area-inset-bottom, 0px)); gap: 18px; }
   .music-split { grid-template-columns: 1fr; gap: var(--space-2); }
-  .profile-split { grid-template-columns: 1fr; }
-  .card-row { grid-template-columns: 1fr 1fr; gap: var(--space-1); }
+  .profile-split { grid-template-columns: 1fr; gap: 12px; }
+  .card-row { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .card-row .og-card { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .hero { gap: 12px; }
+  .hero-text h1 { font-size: clamp(28px, 10vw, 40px); }
+  .projects-grid { grid-template-columns: 1fr; gap: 12px; }
+  .project-card { min-height: 0; }
+  .project-thumb { height: 72px; }
+  .neofetch-data { overflow-x: auto; max-width: 100%; font-size: 11px; line-height: 1.7; white-space: pre; }
+  .discord-card-cover { height: 74px; }
+  .discord-card-cover::after { height: 74px; }
+  .discord-card-open { font-size: 10px; }
+  .discord-card-main { padding: 0 14px; }
+  .discord-card-header { min-height: 72px; margin-top: -28px; }
+  .discord-card-avatar-wrap .og-avatar { width: 58px; height: 58px; }
+  .discord-card-status { padding-top: 5px; }
+  .discord-card-activity { margin: 7px 14px 14px; }
+  .music-now-playing { min-height: 210px; }
 }
 
 /* ── Projects Grid ── */
@@ -595,6 +615,7 @@ button.music-now-playing, button.music-tile { padding: 0; }
 
 html { background: var(--color-base); }
 body { font-family: var(--font); font-size: 14px; line-height: 1.5; }
+.main, .section, .profile-split, .music-split, .projects-grid, .og-card, .project-card { min-width: 0; }
 .top-bar { max-width: 1180px; margin: 0 auto; padding: 16px 24px; border-bottom: 0; }
 .top-bar-brand { font-size: 14px; text-transform: none; letter-spacing: -.01em; font-weight: 650; }
 .top-bar-discord { padding: 6px 12px; font-size: 12px; }
